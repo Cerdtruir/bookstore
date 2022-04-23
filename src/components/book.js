@@ -1,15 +1,16 @@
-const Book = () => {
-  const book = {
-    Name: 'The Lord of the Rings',
-    Author: 'J.R.R. Tolkien',
-  };
+import { useDispatch } from 'react-redux';
+import { removeBook } from '../redux/books/books';
+
+const Book = (props) => {
+  const dispatch = useDispatch();
 
   return (
     <div>
-      <img src="" alt="" />
-      <h3>{book.Name}</h3>
-      <h4>{book.Author}</h4>
-      <button type="submit">Remove</button>
+      <h3>{props.title}</h3>
+      <h4>{props.author}</h4>
+      <button onClick={() => dispatch(removeBook(props.id))} type="button">
+        Remove
+      </button>
     </div>
   );
 };
