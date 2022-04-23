@@ -16,8 +16,9 @@ const AddBook = () => {
       title: Title,
       author: Author,
     };
-    console.log('newBook', newBook);
     dispatch(addBook(newBook));
+    setTitle('');
+    setAuthor('');
   };
 
   const handleInputChange = (e) => {
@@ -33,12 +34,14 @@ const AddBook = () => {
       <input
         type="text"
         name="Title"
+        value={Title}
         placeholder="Title"
         onChange={handleInputChange}
       />
       <input
         type="text"
         name="Author"
+        value={Author}
         placeholder="Author"
         onChange={handleInputChange}
       />
