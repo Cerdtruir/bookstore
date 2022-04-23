@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import booksReducer from './books/books';
 import logger from 'redux-logger';
+import booksReducer from './books/books';
 
 export default configureStore({
   reducer: {
