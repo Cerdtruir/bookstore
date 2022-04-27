@@ -6,7 +6,7 @@ const REMOVE_BOOK = 'bookstore/redux/books/REMOVE_BOOK';
 const SAVE_BOOKS = 'bookstore/redux/books/SAVE_BOOKS';
 const ADD_BOOK = 'bookstore/redux/books/ADD_BOOK';
 
-const initialState = [];
+const initialState = {};
 
 export const addBook = (payload) => ({
   type: ADD_BOOK,
@@ -53,6 +53,21 @@ export function removeBookAPI(payload) {
 
 const booksReducer = (state = initialState, action) => {
   switch (action.type) {
+    case REMOVE_BOOK: {
+      const removeState = { ...state };
+      delete removeState[action.payload];
+      return removeState;
+    }
+    case ADD_BOOK: {
+      const newState = { ...state };
+      return Object.assign(newState, {
+        [action.payload.id]: [{
+          category: 'Fiction',
+          title: action.payload.title,
+          author: action.payload.author,
+        }],
+      });
+    }
     case SAVE_BOOKS:
       return action.payload;
     default:
